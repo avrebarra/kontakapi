@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const KontakSchema = new mongoose.Schema({
     id: String,
-    name: String,
+    nama: String,
     nomor: Number,
 })
 

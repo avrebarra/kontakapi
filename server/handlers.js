@@ -6,8 +6,8 @@ module.exports = {
         const id = uniqid()
         const kontak = await kontakstore.create({
             id: id,
-            name: req.body.name,
-            nomor: req.body.telepon,
+            nama: req.body.nama,
+            nomor: req.body.nomor,
         })
 
         res.json(kontak)
@@ -26,8 +26,8 @@ module.exports = {
     UpdateContactV1: async function (req, res) {
         const kontak = await kontakstore.findOne({ id: req.params.id })
         const newkontak = await kontak.update({
-            name: req.body.name,
-            nomor: req.body.telepon,
+            nama: req.body.nama,
+            nomor: req.body.nomor,
         })
 
         res.json(newkontak)
