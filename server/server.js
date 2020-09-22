@@ -9,9 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // register routes
-app.post('/kontak', handlers.InsertContactV1)
-app.get('/kontak', handlers.GetContactV1)
-app.put('/kontak', handlers.UpdateContactV1)
-app.delete('/kontak', handlers.DeleteContactV1)
+app.post('/kontaks', handlers.InsertContactV1)
+app.get('/kontaks', handlers.GetContactAllV1)
+app.get('/kontaks/:id', handlers.GetContactV1)
+app.put('/kontaks/:id', handlers.UpdateContactV1)
+app.delete('/kontaks/:id', handlers.DeleteContactV1)
 
-module.export = app
+module.exports = app
