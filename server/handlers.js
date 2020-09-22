@@ -25,12 +25,13 @@ module.exports = {
 
     UpdateContactV1: async function (req, res) {
         const kontak = await kontakstore.findOne({ id: req.params.id })
-        const newkontak = await kontak.update({
-            nama: req.body.nama,
-            nomor: req.body.nomor,
-        })
 
-        res.json(newkontak)
+        kontak.nama = req.body.nama
+        kontak.nomor = req.body.nomor
+
+        await kontak.save()
+
+        res.json(kontak)
     },
 
     DeleteContactV1: async function (req, res) {
