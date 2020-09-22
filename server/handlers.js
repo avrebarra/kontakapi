@@ -19,12 +19,15 @@ module.exports = {
     },
 
     GetContactV1: async function (req, res) {
-        const result = await kontakstore.findOne({ id: req.params.id })
-        res.json(result)
+        const kontak = await kontakstore.findOne({ id: req.params.id })
+        if (kontak == null) res.status(404).json({ error: 'kontak tidak ditemukan' })
+
+        res.json(kontak)
     },
 
     UpdateContactV1: async function (req, res) {
         const kontak = await kontakstore.findOne({ id: req.params.id })
+        if (kontak == null) res.status(404).json({ error: 'kontak tidak ditemukan' })
 
         kontak.nama = req.body.nama
         kontak.nomor = req.body.nomor
@@ -36,8 +39,9 @@ module.exports = {
 
     DeleteContactV1: async function (req, res) {
         const kontak = await kontakstore.findOne({ id: req.params.id })
-        const newkontak = await kontak.remove()
+        if (kontak == null) res.status(404).json({ error: 'kontak tidak ditemukan' })
 
+        const newkontak = await kontak.remove()
         res.json(newkontak)
     },
 
