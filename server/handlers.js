@@ -1,8 +1,9 @@
+const uniqid = require('uniqid')
 const kontakstore = require('../services/kontak-store')
 
 module.exports = {
     InsertContactV1: async function (req, res) {
-        const id = ''
+        const id = uniqid()
         const kontak = await kontakstore.create({
             id: id,
             name: req.body.name,
